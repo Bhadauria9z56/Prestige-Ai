@@ -6,7 +6,7 @@ A professional AI chatbot powered by Groq, deployed on Railway with a nature-ins
 
 ## Live Demo
 
-Deployed at: `bhadauriya-ai-production.up.railway.app`
+Deployed at: `https://bhadauriya-ai-production.netlify.app`
 
 ---
 
