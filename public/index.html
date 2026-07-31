@@ -38,20 +38,43 @@
             --shadow-md: 0 14px 40px rgba(22, 101, 52, 0.12);
         }
 
-        body.light-mode {
-            --bg-base: #ffffff;
-            --bg-surface: #f0fdf4;
-            --bg-elevated: #f9fafb;
-            --bg-card: #f3f4f6;
-            --bg-hover: #e5e7eb;
-            --bg-input: #ffffff;
-            --border: #d1fae5;
-            --border-bright: #a7f3d0;
-            --border-accent: rgba(74, 222, 128, 0.4);
-            --text-primary: #1a1a1a;
-            --text-secondary: #374151;
-            --text-muted: #6b7280;
-            --user-bubble: linear-gradient(135deg, #4ade80, #22c55e);
+        body.dark-mode {
+            --bg-base: #0a0a0a;
+            --bg-surface: #111111;
+            --bg-elevated: #1a1a1a;
+            --bg-card: #161616;
+            --bg-hover: #222222;
+            --bg-input: #0d0d0d;
+            --border: #2a2a2a;
+            --border-bright: #333333;
+            --border-accent: rgba(74, 222, 128, 0.3);
+            --text-primary: #f1f1f1;
+            --text-secondary: #aaaaaa;
+            --text-muted: #555555;
+            --user-bubble: linear-gradient(135deg, #16a34a, #15803d);
+        }
+
+        body.dark-mode .sidebar {
+            background: #111111;
+        }
+
+        body.dark-mode .topbar {
+            background: rgba(0,0,0,0.8);
+        }
+
+        body.dark-mode .input-card {
+            background: #1a1a1a;
+            border-color: #2a2a2a;
+        }
+
+        body.dark-mode .empty-chip {
+            background: #1a1a1a;
+            border-color: #2a2a2a;
+            color: #aaaaaa;
+        }
+
+        body.dark-mode .chat-history-item:hover {
+            background: #1e1e1e;
         }
 
         html, body {
@@ -1141,18 +1164,18 @@
     const themeIconLight = document.getElementById('theme-icon-light');
 
     const savedTheme = localStorage.getItem('prestige-theme');
-    if (savedTheme === 'light') {
-      document.body.classList.add('light-mode');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
       themeIconDark.style.display = 'none';
       themeIconLight.style.display = 'block';
     }
 
     themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      const isLight = document.body.classList.contains('light-mode');
-      themeIconDark.style.display = isLight ? 'none' : 'block';
-      themeIconLight.style.display = isLight ? 'block' : 'none';
-      localStorage.setItem('prestige-theme', isLight ? 'light' : 'dark');
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      themeIconDark.style.display = isDark ? 'none' : 'block';
+      themeIconLight.style.display = isDark ? 'block' : 'none';
+      localStorage.setItem('prestige-theme', isDark ? 'dark' : 'light');
     });
 
     // ── INIT ──
