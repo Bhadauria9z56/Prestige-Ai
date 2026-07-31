@@ -51,20 +51,47 @@
             --text-primary: #f1f1f1;
             --text-secondary: #aaaaaa;
             --text-muted: #555555;
-            --user-bubble: linear-gradient(135deg, #16a34a, #15803d);
+        }
+
+        body.dark-mode,
+        body.dark-mode .app,
+        body.dark-mode .main,
+        body.dark-mode .sidebar,
+        body.dark-mode .topbar,
+        body.dark-mode .chat-area,
+        body.dark-mode .messages-wrapper,
+        body.dark-mode .input-area,
+        body.dark-mode .input-card,
+        body.dark-mode .chat-history,
+        body.dark-mode .sidebar-footer,
+        body.dark-mode .sidebar-top {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
         }
 
         body.dark-mode .sidebar {
             background: #111111;
+            border-right-color: #2a2a2a;
         }
 
         body.dark-mode .topbar {
-            background: rgba(0,0,0,0.8);
+            background: #0a0a0a;
+            border-bottom-color: #2a2a2a;
         }
 
         body.dark-mode .input-card {
             background: #1a1a1a;
             border-color: #2a2a2a;
+        }
+
+        body.dark-mode .new-chat-btn {
+            background: #1a1a1a;
+            border-color: #2a2a2a;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .chat-history-item {
+            color: #aaaaaa;
         }
 
         body.dark-mode .empty-chip {
@@ -75,6 +102,38 @@
 
         body.dark-mode .chat-history-item:hover {
             background: #1e1e1e;
+        }
+
+        body.dark-mode .chat-history-item.active {
+            background: #1a1a1a;
+        }
+
+        body.dark-mode .message-bubble-bot {
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .empty-title {
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .empty-subtitle {
+            color: #aaaaaa;
+        }
+
+        body.dark-mode .action-btn {
+            color: #aaaaaa;
+        }
+
+        body.dark-mode .input-box {
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .sidebar-model-badge {
+            color: #aaaaaa;
+        }
+
+        body.dark-mode .topbar-title {
+            color: #f1f1f1;
         }
 
         html, body {
