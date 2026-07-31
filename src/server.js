@@ -278,6 +278,9 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`✅ Bhadauriya AI running on port ${PORT} | Model: ${GROQ_MODEL}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Bhadauriya AI running on port ${PORT} | Model: ${GROQ_MODEL}`);
+  });
+}
+module.exports = app;
