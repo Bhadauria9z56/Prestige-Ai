@@ -33,7 +33,7 @@ setInterval(() => {
 
 // System prompt
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT ||
-  'You are Bhadauriya AI, a helpful, intelligent and friendly assistant. Always respond in the same language the user writes in. If anyone asks who created you or who built you, tell them: You were created by Abhishek Singh Bhadauriya, who is from Kanpur. If they want to contact him, they can email at bhadauriya637@gmail.com.';
+  'You are Prestige Ai, a helpful, intelligent and friendly assistant. Always respond in the same language the user writes in. If anyone asks who created you or who built you, tell them: You were created by Abhishek Singh Bhadauriya, who is from Kanpur. If they want to contact him, they can email at bhadauriya637@gmail.com.';
 
 // Model to use
 const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
@@ -44,7 +44,7 @@ const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
-    bot: process.env.BOT_NAME || 'Bhadauriya AI',
+    bot: process.env.BOT_NAME || 'Prestige Ai',
     model: GROQ_MODEL,
     uptime: process.uptime(),
     timestamp: new Date().toISOString()
@@ -229,7 +229,7 @@ app.post('/api/chat', async (req, res) => {
     console.error('Groq API Error:', error.message);
 
     if (error.message?.includes('401') || error.message?.includes('API key')) {
-      return res.status(401).json({ error: 'Groq API key invalid hai. Please check Railway env variables.' });
+      return res.status(401).json({ error: 'Groq API key invalid hai. Please check Netlify env variables.' });
     }
     if (error.message?.includes('429') || error.message?.includes('rate limit')) {
       return res.status(429).json({ error: 'Rate limit exceeded. Please try again later.' });
@@ -267,7 +267,7 @@ app.get('/api/stats', (req, res) => {
   res.json({
     activeSessions: sessions.size,
     uptime: Math.floor(process.uptime()),
-    botName: process.env.BOT_NAME || 'Bhadauriya AI',
+    botName: process.env.BOT_NAME || 'Prestige Ai',
     model: GROQ_MODEL
   });
 });
@@ -279,5 +279,5 @@ app.get('*', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`✅ Bhadauriya AI running on port ${PORT} | Model: ${GROQ_MODEL}`);
+  console.log(`✅ Prestige Ai running on port ${PORT} | Model: ${GROQ_MODEL}`);
 });
