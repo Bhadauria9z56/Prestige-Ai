@@ -277,7 +277,9 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`✅ Prestige AI running on port ${PORT} | Model: ${GROQ_MODEL}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Prestige AI running on port ${PORT}`);
+  });
+}
+module.exports = app;

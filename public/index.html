@@ -38,6 +38,22 @@
             --shadow-md: 0 14px 40px rgba(22, 101, 52, 0.12);
         }
 
+        body.light-mode {
+            --bg-base: #ffffff;
+            --bg-surface: #f0fdf4;
+            --bg-elevated: #f9fafb;
+            --bg-card: #f3f4f6;
+            --bg-hover: #e5e7eb;
+            --bg-input: #ffffff;
+            --border: #d1fae5;
+            --border-bright: #a7f3d0;
+            --border-accent: rgba(74, 222, 128, 0.4);
+            --text-primary: #1a1a1a;
+            --text-secondary: #374151;
+            --text-muted: #6b7280;
+            --user-bubble: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+
         html, body {
             height: 100dvh;
             font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1024,6 +1040,10 @@
                         </svg>
                         <span>Call</span>
                     </button>
+                    <button class="action-btn" id="theme-toggle" type="button" title="Toggle theme">
+                        <span id="theme-icon-dark">🌙</span>
+                        <span id="theme-icon-light" style="display: none;">☀️</span>
+                    </button>
                     <div class="spacer"></div>
                     <button class="send-btn" id="send-btn" type="button" title="Send message" disabled>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1116,6 +1136,24 @@
     const userTranscriptEl = document.getElementById('user-transcript');
     const aiTranscriptEl = document.getElementById('ai-transcript');
     const endCallBtn = document.getElementById('end-call-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIconDark = document.getElementById('theme-icon-dark');
+    const themeIconLight = document.getElementById('theme-icon-light');
+
+    const savedTheme = localStorage.getItem('prestige-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      themeIconDark.style.display = 'none';
+      themeIconLight.style.display = 'block';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeIconDark.style.display = isLight ? 'none' : 'block';
+      themeIconLight.style.display = isLight ? 'block' : 'none';
+      localStorage.setItem('prestige-theme', isLight ? 'light' : 'dark');
+    });
 
     // ── INIT ──
     async function init() {
